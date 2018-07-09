@@ -8,16 +8,6 @@ public class Percolation {
     private int size;
     private int openSites = 0;
 
-    private void validateRange(int row, int col) {
-        if (!(row >= 1 && row <= size && col >= 1 && col <= size)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private int getGridIndex(int row, int col) {
-        return (row - 1) * size + col - 1;
-    }
-
     // create n-by-n grid, with all sites blocked
     public Percolation(int n) {
         if (n <= 0) {
@@ -75,5 +65,15 @@ public class Percolation {
     // does the system percolate?
     public boolean percolates() {
         return uf.connected(top, bottom);
+    }
+
+    private void validateRange(int row, int col) {
+        if (!(row >= 1 && row <= size && col >= 1 && col <= size)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private int getGridIndex(int row, int col) {
+        return (row - 1) * size + col - 1;
     }
 }
