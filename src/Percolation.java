@@ -74,6 +74,6 @@ public class Percolation {
     }
 
     private int getGridIndex(int row, int col) {
-        return (row - 1) * size + col - 1;
+        return (row - 1) * size + col;
     }
 }
