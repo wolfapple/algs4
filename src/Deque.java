@@ -57,9 +57,13 @@ public class Deque<Item> implements Iterable<Item> {
             throw new NoSuchElementException();
         }
         Item item = first.item;
-        first = first.next;
-        first.prev = null;
         size -= 1;
+        if (isEmpty()) {
+            first = last = null;
+        } else {
+            first = first.next;
+            first.prev = null;
+        }
         return item;
     }
 
@@ -68,9 +72,13 @@ public class Deque<Item> implements Iterable<Item> {
             throw new NoSuchElementException();
         }
         Item item = last.item;
-        last = last.prev;
-        last.next = null;
         size -= 1;
+        if (isEmpty()) {
+            first = last = null;
+        } else {
+            last = last.prev;
+            last.next = null;
+        }
         return item;
     }
 
@@ -125,7 +133,7 @@ public class Deque<Item> implements Iterable<Item> {
         StdOut.println(rf);
         StdOut.println(rl);
         Iterator<Integer> it = q.iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             int i = it.next();
             StdOut.print(i);
         }

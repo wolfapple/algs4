@@ -99,7 +99,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private void resize(int capacity) {
         Item[] temp = (Item[]) new Object[capacity];
-        for(int i=0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             temp[i] = arr[i];
         }
         arr = temp;
@@ -115,7 +115,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         StdOut.println(q.dequeue());
         StdOut.println(q.sample());
         Iterator<Integer> it = q.iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             int i = it.next();
             StdOut.print(i);
         }
