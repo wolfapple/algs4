@@ -19,16 +19,15 @@ public class FastCollinearPoints {
                 throw new IllegalArgumentException();
             }
         }
-
         copyPoints = points.clone();
-        Arrays.sort(copyPoints);
-        Point[] otherPoints = copyPoints.clone();
-        for (int i = 0; i < copyPoints.length - 3; i++) {
+
+        for (int i = 0; i < copyPoints.length; i++) {
             Point p = copyPoints[i];
+            Point[] otherPoints = copyPoints.clone();
             Arrays.sort(otherPoints, p.slopeOrder());
-            if (p.slopeTo(otherPoints[i+1]) == p.slopeTo(otherPoints[i+2])) {
-                if (p.slopeTo(otherPoints[i+1]) == p.slopeTo(otherPoints[i+3])) {
-                    LineSegment segment = new LineSegment(p, otherPoints[i+3]);
+            for (int j = 1; j < otherPoints.length - 2; j++) {
+                if (p.slopeTo(otherPoints[j]) == p.slopeTo(otherPoints[j+1]) && p.slopeTo(otherPoints[j]) == p.slopeTo(otherPoints[j+2])) {
+                    LineSegment segment = new LineSegment(p, otherPoints[j+2]);
                     segments.add(segment);
                 }
             }

@@ -22,6 +22,13 @@ public class BruteCollinearPoints {
 
         copyPoints = points.clone();
         Arrays.sort(copyPoints);
+
+        for (int i = 0; i < copyPoints.length - 1; i++) {
+            if (copyPoints[i].compareTo(copyPoints[i + 1]) == 0) {
+                throw new java.lang.IllegalArgumentException();
+            }
+        }
+
         for (int p = 0; p < copyPoints.length - 3; p++) {
             for (int q = p + 1; q < copyPoints.length - 2; q++) {
                 double slopePQ = copyPoints[p].slopeTo(copyPoints[q]);
